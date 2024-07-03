@@ -14,7 +14,7 @@ const retriveSingleProduct = (_id: string) => {
   return result;
 };
 const updateProduct = (_id: string, data: object) => {
-  const result = ProductModel.findByIdAndUpdate({ _id }, data);
+  const result = ProductModel.findByIdAndUpdate({ _id }, data, { new: true });
   return result;
 };
 const deleteProduct = (_id: string) => {

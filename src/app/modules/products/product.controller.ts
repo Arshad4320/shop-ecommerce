@@ -7,13 +7,13 @@ const crateProduct = async (req: Request, res: Response) => {
     const productType: IProduct = req.body;
     const result = await ProductService.crateProduct(productType);
 
-    res.send(200).json({
+    res.status(200).json({
       success: true,
       message: "product crated successfully",
       data: result,
     });
   } catch (err) {
-    res.send(400).json({
+    res.status(400).json({
       seccess: false,
       message: err,
     });
@@ -22,13 +22,13 @@ const crateProduct = async (req: Request, res: Response) => {
 const retriveProduct = async (req: Request, res: Response) => {
   try {
     const result = await ProductService.retrieveProducts();
-    res.send(200).json({
+    res.status(200).json({
       success: true,
       message: "Products Retrived successfully",
       data: result,
     });
   } catch (err) {
-    res.send(400).json({
+    res.status(400).json({
       success: false,
       message: err,
     });
@@ -36,15 +36,15 @@ const retriveProduct = async (req: Request, res: Response) => {
 };
 const retriveSingleProduct = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-    const result = await ProductService.retriveSingleProduct(id);
-    res.send(200).json({
+    const { productId } = req.params;
+    const result = await ProductService.retriveSingleProduct(productId);
+    res.status(200).json({
       success: true,
       message: "Product Retrive Successfully",
       data: result,
     });
   } catch (err) {
-    res.send(400).json({
+    res.status(400).json({
       success: false,
       message: err,
     });
@@ -52,16 +52,16 @@ const retriveSingleProduct = async (req: Request, res: Response) => {
 };
 const updateProduct = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
+    const { productId } = req.params;
     const { data } = req.body;
-    const result = await ProductService.updateProduct(id, data);
-    res.send(200).json({
+    const result = await ProductService.updateProduct(productId, data);
+    res.status(200).json({
       success: true,
       message: "Product Update Successfully",
       data: result,
     });
   } catch (err) {
-    res.send(400).json({
+    res.status(400).json({
       success: false,
       message: err,
     });
@@ -71,13 +71,13 @@ const deleteProduct = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const result = await ProductService.deleteProduct(id);
-    res.send(200).json({
+    res.status(200).json({
       success: true,
       message: "Product deleted succssfully",
       data: result,
     });
   } catch (err) {
-    res.send(400).json({
+    res.status(400).json({
       success: false,
       message: err,
     });

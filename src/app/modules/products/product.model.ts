@@ -26,16 +26,28 @@ const productSchema = new Schema<IProduct>({
   variants: {
     type: [
       {
-        type: String,
-        value: String,
+        type: {
+          type: String,
+          required: true,
+        },
+        value: {
+          type: String,
+          required: true,
+        },
       },
     ],
     required: true,
   },
   inventory: {
     type: {
-      quantity: Number,
-      inStock: Boolean,
+      quantity: {
+        type: Number,
+        required: true,
+      },
+      inStock: {
+        type: Boolean,
+        required: true,
+      },
     },
     required: true,
   },
