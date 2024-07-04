@@ -18,10 +18,12 @@ const crateOrder = async (req: Request, res: Response) => {
 };
 const retriveOrder = async (req: Request, res: Response) => {
   try {
-    const result = await orderServices.retriveOrder();
+    const email = req.query.email as string;
+    const result = await orderServices.retriveOrder(email);
+
     res.status(200).json({
       success: true,
-      message: "Order Retrived successfully",
+      message: "Order fetched successfully",
       data: result,
     });
   } catch (err) {

@@ -5,8 +5,12 @@ const crateOrder = (order: IOrder) => {
   const result = orderModel.create(order);
   return result;
 };
-const retriveOrder = () => {
-  const result = orderModel.find();
+const retriveOrder = (email?: string) => {
+  let query = {};
+  if (email) {
+    query = { email: { $regex: email, $options: "i" } };
+  }
+  const result = orderModel.find(query).exec();
   return result;
 };
 const retriveSingleOrder = (email: string) => {

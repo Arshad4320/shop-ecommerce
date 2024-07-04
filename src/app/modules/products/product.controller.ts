@@ -45,7 +45,7 @@ const searchProduct = async (req: Request, res: Response) => {
 
     res.status(200).json({
       success: true,
-      message: "Product Retrive Successfully",
+      message: "Product fetched Successfully",
       data: result,
     });
   } catch (err) {
@@ -62,7 +62,7 @@ const retriveSingleProduct = async (req: Request, res: Response) => {
     const result = await ProductService.retriveSingleProduct(productId);
     res.status(200).json({
       success: true,
-      message: "Product Retrive Successfully",
+      message: "Product fetched Successfully",
       data: result,
     });
   } catch (err) {
