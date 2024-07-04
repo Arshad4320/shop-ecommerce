@@ -1,9 +1,10 @@
 import { Request, Response } from "express";
 import { ProductService } from "./product.service";
 import IProduct from "./product.interface";
+import { orderServices } from "../orders/order.service";
 
 // import productValidation from "./product.validation";
-
+//product crate controller function
 const crateProduct = async (req: Request, res: Response) => {
   try {
     const productType: IProduct = req.body;
@@ -22,21 +23,7 @@ const crateProduct = async (req: Request, res: Response) => {
     });
   }
 };
-// const retriveProducts = async (req: Request, res: Response) => {
-//   try {
-//     const result = await ProductService.retriveProducts();
-//     res.status(200).json({
-//       status: 200,
-//       message: "Product Retrive Successfully",
-//       data: result,
-//     });
-//   } catch (err) {
-//     res.status(400).json({
-//       status: true,
-//       message: err,
-//     });
-//   }
-// };
+//product search controller function
 const searchProduct = async (req: Request, res: Response) => {
   try {
     const searchTerm = req.query.searchTerm as string;
@@ -55,7 +42,7 @@ const searchProduct = async (req: Request, res: Response) => {
     });
   }
 };
-
+//single product retrive controller function
 const retriveSingleProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
@@ -72,14 +59,18 @@ const retriveSingleProduct = async (req: Request, res: Response) => {
     });
   }
 };
+//product update controller function
 const updateProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
-    const { data } = req.body;
+
+    const data = req.body;
+
     const result = await ProductService.updateProduct(productId, data);
+
     res.status(200).json({
       success: true,
-      message: "Product Update Successfully",
+      message: "Product Updated Successfully",
       data: result,
     });
   } catch (err) {
@@ -89,10 +80,11 @@ const updateProduct = async (req: Request, res: Response) => {
     });
   }
 };
+//product delete controller function
 const deleteProduct = async (req: Request, res: Response) => {
   try {
-    const { id } = req.params;
-    const result = await ProductService.deleteProduct(id);
+    const { productId } = req.params;
+    const result = await ProductService.deleteProduct(productId);
     res.status(200).json({
       success: true,
       message: "Product deleted succssfully",
@@ -111,5 +103,4 @@ export const productController = {
   retriveSingleProduct,
   updateProduct,
   deleteProduct,
-  // retriveProducts,
 };

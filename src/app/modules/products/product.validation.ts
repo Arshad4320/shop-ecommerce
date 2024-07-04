@@ -29,7 +29,7 @@ const productValidation = z.object({
     z.object({
       type: z.string(),
       value: z.string(),
-    })
+    }),
   ),
   inventory: z.object({
     quantity: z.number(),

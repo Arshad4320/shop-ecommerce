@@ -1,10 +1,20 @@
+import { ProductService } from "../products/product.service";
 import { IOrder } from "./order.interface";
 import { orderModel } from "./order.model";
 
-const crateOrder = (order: IOrder) => {
+// const crateOrder = (order: IOrder) => {
+//   const result = orderModel.create(order);
+//   return result;
+// };
+
+const crateOrder = async (order: IOrder) => {
   const result = orderModel.create(order);
+
+  await ProductService.productInventory(order.productId, order.quantity);
+
   return result;
 };
+
 const retriveOrder = (email?: string) => {
   let query = {};
   if (email) {
