@@ -60,3 +60,9 @@ const retriveSingleOrder = async (req: Request, res: Response) => {
 //         })
 //     }
 // }
+
+export const orderController = {
+  crateOrder,
+  retriveOrder,
+  retriveSingleOrder,
+};

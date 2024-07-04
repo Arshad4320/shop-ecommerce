@@ -5,8 +5,17 @@ const crateProduct = (product: IProduct) => {
   const result = ProductModel.create(product);
   return result;
 };
-const retrieveProducts = () => {
-  const result = ProductModel.find();
+// const retriveProducts = () => {
+//   const result = ProductModel.find();
+//   return result;
+// };
+const searchProducts = async (searchTerm?: string) => {
+  let query = {};
+  if (searchTerm) {
+    query = { name: { $regex: searchTerm, $options: "i" } };
+  }
+  const result = await ProductModel.find(query).exec();
+
   return result;
 };
 const retriveSingleProduct = (_id: string) => {
@@ -23,8 +32,9 @@ const deleteProduct = (_id: string) => {
 };
 export const ProductService = {
   crateProduct,
-  retrieveProducts,
+  searchProducts,
   retriveSingleProduct,
   updateProduct,
   deleteProduct,
+  // retriveProducts,
 };

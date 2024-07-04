@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { ProductService } from "./product.service";
 import IProduct from "./product.interface";
+
 // import productValidation from "./product.validation";
 
 const crateProduct = async (req: Request, res: Response) => {
@@ -21,21 +22,40 @@ const crateProduct = async (req: Request, res: Response) => {
     });
   }
 };
-const retriveProduct = async (req: Request, res: Response) => {
+// const retriveProducts = async (req: Request, res: Response) => {
+//   try {
+//     const result = await ProductService.retriveProducts();
+//     res.status(200).json({
+//       status: 200,
+//       message: "Product Retrive Successfully",
+//       data: result,
+//     });
+//   } catch (err) {
+//     res.status(400).json({
+//       status: true,
+//       message: err,
+//     });
+//   }
+// };
+const searchProduct = async (req: Request, res: Response) => {
   try {
-    const result = await ProductService.retrieveProducts();
+    const searchTerm = req.query.searchTerm as string;
+
+    const result = await ProductService.searchProducts(searchTerm);
+
     res.status(200).json({
       success: true,
-      message: "Products Retrived successfully",
+      message: "Product Retrive Successfully",
       data: result,
     });
   } catch (err) {
     res.status(400).json({
       success: false,
-      message: err,
+      message: err || "something went wrong",
     });
   }
 };
+
 const retriveSingleProduct = async (req: Request, res: Response) => {
   try {
     const { productId } = req.params;
@@ -87,8 +107,9 @@ const deleteProduct = async (req: Request, res: Response) => {
 };
 export const productController = {
   crateProduct,
-  retriveProduct,
+  searchProduct,
   retriveSingleProduct,
   updateProduct,
   deleteProduct,
+  // retriveProducts,
 };
