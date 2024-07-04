@@ -1,10 +1,12 @@
 import { Request, Response } from "express";
 import { ProductService } from "./product.service";
 import IProduct from "./product.interface";
+// import productValidation from "./product.validation";
 
 const crateProduct = async (req: Request, res: Response) => {
   try {
     const productType: IProduct = req.body;
+    // const validationProduct = productValidation.parse(productType);
     const result = await ProductService.crateProduct(productType);
 
     res.status(200).json({

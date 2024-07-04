@@ -1,23 +1,14 @@
-export type TTags = [tags: string];
-export type TVariants = [
-  {
-    type: string;
-    value: string;
-  }
-];
-
-export type TInventory = {
-  quantity: number;
-  inStock: boolean;
-};
 interface IProduct {
   name: string;
   description: string;
   price: number;
   category: string;
-  tags: TTags;
-  variants: TVariants;
-  inventory: TInventory;
+  tags: [string];
+  variants: { type: string; value: string }[];
+  inventory: {
+    quantity: number;
+    inStock: boolean;
+  };
 }
 
 export default IProduct;

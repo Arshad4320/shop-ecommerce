@@ -18,7 +18,7 @@ const updateProduct = (_id: string, data: object) => {
   return result;
 };
 const deleteProduct = (_id: string) => {
-  const result = ProductModel.updateOne({ _id, isDeleted: true });
+  const result = ProductModel.findOneAndDelete({ _id });
   return result;
 };
 export const ProductService = {
