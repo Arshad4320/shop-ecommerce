@@ -12,7 +12,7 @@ const productValidation = z.object({
     z.object({
       type: z.string({ required_error: "type is required" }),
       value: z.string({ required_error: "value is required" }),
-    })
+    }),
   ),
   inventory: z.object({
     quantity: z.number({ required_error: "quantity is required" }),
@@ -21,6 +21,3 @@ const productValidation = z.object({
 });
 
 export default productValidation;
-function unique(): any {
-  throw new Error("Function not implemented.");
-}
