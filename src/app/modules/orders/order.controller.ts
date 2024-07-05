@@ -51,7 +51,7 @@ const retriveOrder = async (req: Request, res: Response) => {
       res.status(400).json({
         success: false,
         errors: err.name,
-        message: err.message,
+        message: "something went wrong",
       });
     }
   }

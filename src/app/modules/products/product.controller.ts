@@ -30,7 +30,7 @@ const crateProduct = async (req: Request, res: Response) => {
       res.status(400).json({
         success: false,
         errors: err.name,
-        message: err.message,
+        message: "something went wrong",
       });
     }
   }
@@ -52,7 +52,7 @@ const searchProduct = async (req: Request, res: Response) => {
       res.status(400).json({
         success: false,
         errors: err.name,
-        message: err.message,
+        message: "something went wrong",
       });
     }
   }
@@ -72,7 +72,7 @@ const retriveSingleProduct = async (req: Request, res: Response) => {
       res.status(400).json({
         success: false,
         errors: err.name,
-        message: err.message,
+        message: "something went wrong",
       });
     }
   }
@@ -96,7 +96,7 @@ const updateProduct = async (req: Request, res: Response) => {
       res.status(400).json({
         success: false,
         errors: err.name,
-        message: err.message,
+        message: "something went wrong",
       });
     }
   }
@@ -116,7 +116,7 @@ const deleteProduct = async (req: Request, res: Response) => {
       res.status(400).json({
         success: false,
         errors: err.name,
-        message: err.message,
+        message: "something went wrong",
       });
     }
   }
