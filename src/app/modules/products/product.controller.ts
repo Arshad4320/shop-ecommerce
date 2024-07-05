@@ -3,6 +3,8 @@ import { ProductService } from "./product.service";
 import IProduct from "./product.interface";
 
 import productValidation from "./product.validation";
+import { ZodError } from "zod";
+import mongoose from "mongoose";
 //product crate controller function
 const crateProduct = async (req: Request, res: Response) => {
   try {
@@ -16,10 +18,21 @@ const crateProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    res.status(400).json({
-      seccess: false,
-      message: err,
-    });
+    if (err instanceof ZodError) {
+      res.status(400).json({
+        success: false,
+        message: err.name,
+        errors: err.errors.map((e) => ({
+          name: e.message,
+        })),
+      });
+    } else if (err instanceof mongoose.Error.CastError) {
+      res.status(400).json({
+        success: false,
+        errors: err.name,
+        message: err.message,
+      });
+    }
   }
 };
 //product search controller function
@@ -35,10 +48,13 @@ const searchProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    res.status(400).json({
-      success: false,
-      message: err || "something went wrong",
-    });
+    if (err instanceof mongoose.Error.CastError) {
+      res.status(400).json({
+        success: false,
+        errors: err.name,
+        message: err.message,
+      });
+    }
   }
 };
 //single product retrive controller function
@@ -52,10 +68,13 @@ const retriveSingleProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    res.status(400).json({
-      success: false,
-      message: err,
-    });
+    if (err instanceof mongoose.Error.CastError) {
+      res.status(400).json({
+        success: false,
+        errors: err.name,
+        message: err.message,
+      });
+    }
   }
 };
 //product update controller function
@@ -73,10 +92,13 @@ const updateProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    res.status(400).json({
-      success: false,
-      message: err,
-    });
+    if (err instanceof mongoose.Error.CastError) {
+      res.status(400).json({
+        success: false,
+        errors: err.name,
+        message: err.message,
+      });
+    }
   }
 };
 //product delete controller function
@@ -90,10 +112,13 @@ const deleteProduct = async (req: Request, res: Response) => {
       data: result,
     });
   } catch (err) {
-    res.status(400).json({
-      success: false,
-      message: err,
-    });
+    if (err instanceof mongoose.Error.CastError) {
+      res.status(400).json({
+        success: false,
+        errors: err.name,
+        message: err.message,
+      });
+    }
   }
 };
 export const productController = {
