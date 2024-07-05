@@ -2,7 +2,7 @@
 ## live link : https://backend-ecommerce-pink.vercel.app/
 ### 1.Create product
 
-- Endpoint: /api/products
+- Endpoint: api/products
 - Method: POST
 - Sample Request Body:
   {
@@ -29,27 +29,27 @@
 
 ### 2. Retrieve a List of All Products
 
-- Endpoint: /api/products
+- Endpoint: api/products
 - Method: GET
 
 ### 3. Retrieve a Specific Product by ID
 
-- /api/products/:productId
+- api/products/:productId
 - Method: GET
 
 ### 4. Update Product Information
 
-- Endpoint: /api/products/:productId
+- Endpoint: api/products/:productId
 - Method: PUT
 
 ### 5. Delete a Product
 
-- Endpoint: /api/products/:productId
+- Endpoint: api/products/:productId
 - Method: DELETE
 
 ### 6. Search a product
 
-- Endpoint: /api/products?searchTerm=productName
+- Endpoint: api/products?searchTerm=productName
 - Method: GET
 
 ## Order Management API Endpoints:
@@ -57,7 +57,7 @@
 ### 1.Create a New Order
 
 - 1.Create a New Order
-- Endpoint: /api/orders
+- Endpoint: api/orders
 - Method: POST
 - Request Body:{
   "email": "abc@gmail.com",
@@ -68,10 +68,10 @@
 
 ### 2.Retrieve All Orders
 
-- Endpoint: /api/orders
+- Endpoint: api/orders
 - Method: GET
 
 ### 3. Retrieve Orders by User Email
 
-- Endpoint: /api/orders?email=level2@programming-hero.com
+- Endpoint: api/orders?email=level2@programming-hero.com
 - Method: GET

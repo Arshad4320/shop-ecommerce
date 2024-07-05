@@ -17,6 +17,6 @@ app.use((0, cors_1.default)());
 app.use("/", product_router_1.productRouter);
 app.use("/", order_router_1.orderRouter);
 app.get("/", (req, res) => {
-    res.send("Hello World!");
+    res.send("Server is running on port 5000");
 });
 exports.default = app;
