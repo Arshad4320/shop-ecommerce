@@ -1,40 +1,26 @@
 import { z } from "zod";
 
-// const productValidation = z.object({
-//   name: z.string(),
-//   description: z.string(),
-//   price: z.number(),
-//   category: z.string(),
-//   tags: z.array(z.string()),
-//   variants: z.array(
-//     z.object({
-//       type: z.string(),
-//       value: z.string(),
-//     })
-//   ),
-//   inventory: z.object({
-//     quantity: z.number(),
-//     inStock: z.boolean(),
-//   }),
-// });
-
 const productValidation = z.object({
-  name: z.string(),
-  description: z.string(),
-  price: z.number(),
-  category: z.string(),
-  tags: z.array(z.string()),
+  name: z.string({ required_error: "Name is required" }),
+
+  description: z.string({ required_error: "description is required" }),
+  price: z.number({ required_error: "price is required" }),
+  category: z.string({ required_error: "category is required" }),
+  tags: z.array(z.string({ required_error: "tags is required" })),
 
   variants: z.array(
     z.object({
-      type: z.string(),
-      value: z.string(),
-    }),
+      type: z.string({ required_error: "type is required" }),
+      value: z.string({ required_error: "value is required" }),
+    })
   ),
   inventory: z.object({
-    quantity: z.number(),
-    inStock: z.boolean(),
+    quantity: z.number({ required_error: "quantity is required" }),
+    inStock: z.boolean({ required_error: "stock is required" }),
   }),
 });
 
 export default productValidation;
+function unique(): any {
+  throw new Error("Function not implemented.");
+}

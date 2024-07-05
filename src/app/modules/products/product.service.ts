@@ -36,7 +36,10 @@ const productInventory = async (productId: string, quantity: number) => {
     throw new Error("Product not found");
   }
 
-  if (product.inventory.quantity < quantity) {
+  if (
+    product.inventory.quantity < quantity ||
+    product.inventory.quantity === 0
+  ) {
     throw new Error("Insufficient quantity available in inventory");
   }
 

@@ -1,19 +1,18 @@
 import { Request, Response } from "express";
 import { ProductService } from "./product.service";
 import IProduct from "./product.interface";
-import { orderServices } from "../orders/order.service";
 
-// import productValidation from "./product.validation";
+import productValidation from "./product.validation";
 //product crate controller function
 const crateProduct = async (req: Request, res: Response) => {
   try {
     const productType: IProduct = req.body;
-    // const validationProduct = productValidation.parse(productType);
-    const result = await ProductService.crateProduct(productType);
+    const validateProduct = productValidation.parse(productType);
+    const result = await ProductService.crateProduct(validateProduct);
 
     res.status(200).json({
       success: true,
-      message: "product crated successfully",
+      message: "product created successfully",
       data: result,
     });
   } catch (err) {
