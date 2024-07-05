@@ -4,7 +4,7 @@
 ### 1.Create product
 - Endpoint: /api/products
 - Method: POST
-- Sample Request Body:
+- Sample Request Body: 
 {
     "name": "iPhone 13",
     "description": "A sleek and powerful smartphone with cutting-edge features.",
@@ -53,7 +53,7 @@
 - 1.Create a New Order
 - Endpoint: /api/orders
 - Method: POST
-Request Body:{
+- Request Body:{
     "email": "level2@programming-hero.com",
     "productId": "5fd67e890b60c903cd8544a3",
     "price": 999,
