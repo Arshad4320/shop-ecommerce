@@ -73,5 +73,5 @@
 
 ### 3. Retrieve Orders by User Email
 
-- Endpoint: api/orders?email=level2@programming-hero.com
+- Endpoint: api/orders?email=userEmail
 - Method: GET
